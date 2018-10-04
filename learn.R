@@ -2,7 +2,7 @@ learn = function (hist)
   {
   
   #Pneumonia probability matrix
-  probPe = matrix(0,1,2)
+  probPn = matrix(0,1,2)
   probPn[1,1] = 1 - sum(hist$Pn)/length(hist$Pn)
   probPn[1,2] = 1 - probPn[1,1]
   
@@ -79,11 +79,10 @@ learn = function (hist)
   probXR[8,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==1])/length(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==1])
   probXR[8,2] = 1 - probXR[8,1]
   
+  network = list(probPn = probPn, probBr = probBr, probDy = probDy, probLC = probLC, probSm = probSm,
+                 probVTB = probVTB, probTB = probTB, probXR = probXR, probTe = probTe)
   
-  
-  
-  
-    
+  return(network)
 }
 
 
