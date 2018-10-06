@@ -28,7 +28,7 @@ diagnose = function(network, cases)
         probTemp_old = probTemp_old*network$LC[temp$Sm+1,temp$LC+1]
         probTemp_old = probTemp_old*network$Br[temp$Sm+1,temp$Br+1]
         probTemp_old = probTemp_old*network$Dy[(temp$LC)*2+temp$Br+1,temp$Dy+1]
-        probTemp_old = probTemp_old*network$XR[(temp$pn)*4 + (temp$TB)*2+temp$LC+1,temp$XR+1]
+        probTemp_old = probTemp_old*network$XR[(temp$Pn)*4 + (temp$TB)*2+temp$LC+1,temp$XR+1]
         
         
         # we assign a new value to the unknown parameter j
@@ -45,7 +45,7 @@ diagnose = function(network, cases)
         probTemp_new = probTemp_new*network$LC[temp$Sm+1,temp$LC+1]
         probTemp_new = probTemp_new*network$Br[temp$Sm+1,temp$Br+1]
         probTemp_new = probTemp_new*network$Dy[(temp$LC)*2+temp$Br+1,temp$Dy+1]
-        probTemp_new = probTemp_new*network$XR[(temp$pn)*4 + (temp$TB)*2+temp$LC+1,temp$XR+1]
+        probTemp_new = probTemp_new*network$XR[(temp$Pn)*4 + (temp$TB)*2+temp$LC+1,temp$XR+1]
         
         if(probTemp_new < probTemp_old){
           if(runif(1)> probTemp_new/probTemp_old ){

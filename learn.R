@@ -79,7 +79,7 @@ learn = function (hist)
   probXR[8,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==1])/length(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==1])
   probXR[8,2] = 1 - probXR[8,1]
   
-  network = list(Pn = probPn, Br = probBr, Dy = probDy, LC = probLC, bSm = probSm,
+  network = list(Pn = probPn, Br = probBr, Dy = probDy, LC = probLC, Sm = probSm,
                  VTB = probVTB, TB = probTB, XR = probXR, Te = probTe)
   
   return(network)
