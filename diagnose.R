@@ -9,7 +9,7 @@ diagnose = function(network, cases)
     samples = data.frame(Pn = rep(0,1000), Te = rep(0,1000), VTB = rep(0,1000), TB = rep(0,1000), Sm = rep(0,1000),
                          LC = rep(0,1000), Br = rep(0,1000), XR = rep(0,1000), Dy = rep(0,1000))
     
-    samples[1,] = cases[1,]
+    samples[x,] = cases[x,]
     samples$Pn[1] = sample(0:1,1)
     samples$TB[1] = sample(0:1,1)
     samples$LC[1] = sample(0:1,1)
@@ -29,7 +29,6 @@ diagnose = function(network, cases)
         probTemp_old = probTemp_old*network$Br[temp$Sm+1,temp$Br+1]
         probTemp_old = probTemp_old*network$Dy[(temp$LC)*2+temp$Br+1,temp$Dy+1]
         probTemp_old = probTemp_old*network$XR[(temp$Pn)*4 + (temp$TB)*2+temp$LC+1,temp$XR+1]
-        
         
         # we assign a new value to the unknown parameter j
         if(samples[[j]][i-1] == 0){
@@ -63,7 +62,7 @@ diagnose = function(network, cases)
 
     result_probs[x,1] = sum(samples$Pn[101:1000])/900
     result_probs[x,2] = sum(samples$TB[101:1000])/900
-    result_probs[x,3] = sum(samples$Lc[101:1000])/900
+    result_probs[x,3] = sum(samples$LC[101:1000])/900
     result_probs[x,4] = sum(samples$Br[101:1000])/900
       
   }

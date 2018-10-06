@@ -48,35 +48,35 @@ learn = function (hist)
   
   #Probability dyspnea given lungcancer and bronchitis
   probDy = matrix(0,4,2)
-  probDy[1,1] = 1-sum(hist$Dy[hist$Br[hist$LC==0]==0])/length(hist$Dy[hist$Br[hist$LC==0]==0])
+  probDy[1,1] = 1-sum(hist$Dy[(hist$Br==0)&(hist$LC==0)])/length(hist$Dy[(hist$Br==0)  & (hist$LC==0)])
   probDy[1,2] = 1-probDy[1,1]
-  probDy[2,1] = 1-sum(hist$Dy[hist$Br[hist$LC==0]==1])/length(hist$Dy[hist$Br[hist$LC==0]==1])
+  probDy[2,1] = 1-sum(hist$Dy[(hist$Br==1)&(hist$LC==0)])/length(hist$Dy[(hist$Br==1)&(hist$LC==0)])
   probDy[2,2] = 1-probDy[2,1]
-  probDy[3,1] = 1-sum(hist$Dy[hist$Br[hist$LC==1]==0])/length(hist$Dy[hist$Br[hist$LC==1]==0])
+  probDy[3,1] = 1-sum(hist$Dy[(hist$Br==0)&(hist$LC==1)])/length(hist$Dy[(hist$Br==0)&(hist$LC==1)])
   probDy[3,2] = 1-probDy[3,1]
-  probDy[4,1] = 1-sum(hist$Dy[hist$Br[hist$LC==1]==1])/length(hist$Dy[hist$Br[hist$LC==1]==1])
+  probDy[4,1] = 1-sum(hist$Dy[(hist$Br==1)&(hist$LC==1)])/length(hist$Dy[(hist$Br==1)&(hist$LC==1)])
   probDy[4,2] = 1-probDy[4,1]
   
   #Probability X-Ray given lungcancer, tuberculosis, pneumonia
   probXR = matrix(0,8,2)
-  probXR[1,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==0]==0]==0])/length(hist$XR[hist$LC[hist$TB[hist$Pn==0]==0]==0])
+  probXR[1,1] = 1 - sum(hist$XR[hist$LC==0 & hist$TB==0 & hist$Pn==0])/length(hist$XR[hist$LC==0 & hist$TB==0 & hist$Pn==0])
   probXR[1,2] = 1 - probXR[1,1]
-  probXR[2,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==0]==0]==1])/length(hist$XR[hist$LC[hist$TB[hist$Pn==0]==0]==1])
+  probXR[2,1] = 1 - sum(hist$XR[hist$LC==1 & hist$TB==0 & hist$Pn==0])/length(hist$XR[hist$LC==1 & hist$TB==0 & hist$Pn==0])
   probXR[2,2] = 1 - probXR[2,1]
   
-  probXR[3,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==0]==1]==0])/length(hist$XR[hist$LC[hist$TB[hist$Pn==0]==1]==0])
+  probXR[3,1] = 1 - sum(hist$XR[hist$LC==0 & hist$TB==1 & hist$Pn==0])/length(hist$XR[hist$LC==0 & hist$TB==1 & hist$Pn==0])
   probXR[3,2] = 1 - probXR[3,1]
-  probXR[4,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==0]==1]==1])/length(hist$XR[hist$LC[hist$TB[hist$Pn==0]==1]==1])
+  probXR[4,1] = 1 - sum(hist$XR[hist$LC==1 & hist$TB==1 & hist$Pn==0])/length(hist$XR[hist$LC==1 & hist$TB==1 & hist$Pn==0])
   probXR[4,2] = 1 - probXR[4,1]
   
-  probXR[5,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==1]==0]==0])/length(hist$XR[hist$LC[hist$TB[hist$Pn==1]==0]==0])
+  probXR[5,1] = 1 - sum(hist$XR[hist$LC==0 & hist$TB==0 & hist$Pn==1])/length(hist$XR[hist$LC==0 & hist$TB==0 & hist$Pn==1])
   probXR[5,2] = 1 - probXR[5,1]
-  probXR[6,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==1]==0]==1])/length(hist$XR[hist$LC[hist$TB[hist$Pn==1]==0]==1])
+  probXR[6,1] = 1 - sum(hist$XR[hist$LC==1 & hist$TB==0 & hist$Pn==1])/length(hist$XR[hist$LC==1 & hist$TB==0 & hist$Pn==1])
   probXR[6,2] = 1 - probXR[6,1]
   
-  probXR[7,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==0])/length(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==0])
+  probXR[7,1] = 1 - sum(hist$XR[hist$LC==0 & hist$TB==1 & hist$Pn==1])/length(hist$XR[hist$LC==0 & hist$TB==1 & hist$Pn==1])
   probXR[7,2] = 1 - probXR[7,1]
-  probXR[8,1] = 1 - sum(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==1])/length(hist$XR[hist$LC[hist$TB[hist$Pn==1]==1]==1])
+  probXR[8,1] = 1 - sum(hist$XR[hist$LC==1 & hist$TB==1 & hist$Pn==1])/length(hist$XR[hist$LC==1 & hist$TB==1 & hist$Pn==1])
   probXR[8,2] = 1 - probXR[8,1]
   
   network = list(Pn = probPn, Br = probBr, Dy = probDy, LC = probLC, Sm = probSm,
