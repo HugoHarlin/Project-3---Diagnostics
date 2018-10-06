@@ -60,7 +60,7 @@ diagnose = function(network, cases)
       }
       
     }
-    
+
     result_probs[x,1] = sum(samples$Pn[101:1000])/900
     result_probs[x,2] = sum(samples$TB[101:1000])/900
     result_probs[x,3] = sum(samples$Lc[101:1000])/900
